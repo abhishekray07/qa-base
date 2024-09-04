@@ -7,6 +7,7 @@ import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react"
 import { DatadogInitializer } from "@/components/datadog";
+import { ClientLogger } from "@/components/ClientLogger";
 
 import Link from "next/link";
 import "./globals.css";
@@ -69,6 +70,7 @@ export default function RootLayout({
             </div>
           </main>
         </ThemeProvider>
+        <ClientLogger />
         <Analytics />
         <DatadogInitializer />
       </body>
