@@ -6,6 +6,8 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react"
+import { useEffect } from 'react'
+import { initDatadog } from '@/utils/datadog'
 import Link from "next/link";
 import "./globals.css";
 
@@ -24,6 +26,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    initDatadog()
+  }, [])
+
   return (
     <html lang="en" className={GeistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
@@ -67,6 +73,7 @@ export default function RootLayout({
             </div>
           </main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
